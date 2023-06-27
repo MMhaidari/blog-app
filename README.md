@@ -29,9 +29,9 @@
 - [❓ FAQ (OPTIONAL)](#faq)
 - [📝 License](#license)
 
-# 📖 [Catalog of my things] <a name="about-project"></a>
+# 📖 [Blog APP] <a name="about-project"></a>
 
-**[Catalog of my things]** Blog app is a fully funcioning website which helps people post blogs and add comments, add likes, and create account and login. 
+**[Blog APP]** Blog app is a fully funcioning website which helps people post blogs and add comments, add likes, and create account and login. 
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -78,12 +78,12 @@ In order to run this project you need:
 Clone this repository to your desired folder:
 
 - Use the following Commands:
-     - https://github.com/MMhaidari/blog-app-rails.git
+     - https://github.com/MMhaidari/blog-app.git
      - cd blog-app-rails
 
 
 ### Install
-     - cd blog-app-rails
+     - cd blog-app
      - bundle install (install all dependencies)
 
 
@@ -123,7 +123,7 @@ Clone this repository to your desired folder:
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/MMhaidari/blog-app-rails/issues).
+Feel free to check the [issues page](https://github.com/MMhaidari/blog-app/issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
