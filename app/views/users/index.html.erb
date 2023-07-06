@@ -1,1 +1,17 @@
-<h1>list of Users</h1>
+<div class="users-container">
+  <% @users.each do |user| %>
+    <div class="user-card-container">
+      <%= link_to user_path(user.id), class: "user-link" do %>
+        <div class="user-card">
+          <div class="user-photo">
+            <%= image_tag(user.photo, alt: 'user photo', class: 'user-image') %>
+          </div>
+          <div class="user-details">
+            <h1 class="user-name"><%= user.name.capitalize %></h1>
+            <p class="user-post-count">Number of posts: <%= user.posts_counter || "0" %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
