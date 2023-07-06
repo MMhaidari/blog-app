@@ -1,1 +1,14 @@
-<h1>single of post</h1>
+<% if @post %>
+  <h2>Single Post</h2>
+  <div class="single-post-container">
+    <h3 class="post-title"><%= @post.title %></h3>
+    <p class="post-text"><%= @post.text %></p>
+    <p class="post-meta">Comments: <%= @post.comments_counter %>, Likes: <%= @post.likes_counter %></p>
+    <h4 class="recent-comments-title">Recent Comments:</h4>
+    <% @post.five_recent_comments.each do |comment| %>
+      <p class="comment-text"><%= comment.text %></p>
+    <% end %>
+  </div>
+<% else %>
+  <p>No post found.</p>
+<% end %>
