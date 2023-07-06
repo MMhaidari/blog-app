@@ -1,1 +1,13 @@
-<h1>list of posts</h1>
+<div class="posts-container">
+  <% @posts.each do |post| %>
+    <div class="post">
+      <h3 class="post-title"><%= post.title %></h3>
+      <p class="post-text"><%= post.text %></p>
+      <p class="post-meta">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
+      <h4 class="recent-comments-title">Recent Comments:</h4>
+      <% post.five_recent_comments.each do |comment| %>
+        <p class="comment-text"><%= comment.text %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
