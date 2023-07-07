@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
-    before_action :find_user, only: %i[new create]
-    before_action :find_post, only: :create
+  before_action :find_user, only: %i[new create]
+  before_action :find_post, only: :create
 
   def new; end
 

@@ -18,10 +18,8 @@ class PostsController < ApplicationController
     end
 
     @current_user = current_user
-
-    rescue ActiveRecord::RecordNotFound
-      flash[:alert] = 'Post not found.'
-      redirect_to root_path
+  rescue ActiveRecord::RecordNotFound
+    flash[:alert] = 'Post not found.'
+    redirect_to root_path
   end
-  
 end
