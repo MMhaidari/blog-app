@@ -12,3 +12,15 @@
 <% else %>
   <p>No post found.</p>
 <% end %>
+<div class="comment_form_holder">
+  <h3>Leave a comment</h3>
+  <div class="form_buttons">
+    <%= render 'comments/form', comment: @comment %>
+  </div>
+</div>
+
+<div class="like_form_holder">
+  <div class="form_buttons">
+    <%= render 'likes/form', like: @like %>
+  </div>
+</div>
