@@ -11,7 +11,7 @@ class User < ApplicationRecord
   end
 
   def three_recent_posts
-    posts.order(created_at: :desc).limit(3)
+    posts.includes(:comments, :likes).last(3)
   end
 
   def update_posts_counter
@@ -19,6 +19,6 @@ class User < ApplicationRecord
   end
 
   def decrement_posts_counter
-    update(posts_counter: posts.size)
+    decrement(:posts_counter)
   end
 end
