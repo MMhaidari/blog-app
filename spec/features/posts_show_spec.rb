@@ -1,4 +1,5 @@
 require 'rails_helper'
+
 RSpec.describe 'Post show Page', type: :feature do
   describe 'Viewing Post Show page' do
     before(:each) do
