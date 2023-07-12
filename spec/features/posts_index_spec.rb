@@ -6,9 +6,11 @@ RSpec.describe 'Post Index Page', type: :feature do
     @comment1 = Comment.create(post: @first_post, user: @user1, text: 'Hi Tom!, Nice comment')
     visit user_posts_path(@user1)
   end
+  
   it 'should show user name' do
     expect(page).to have_content(@user1.name)
   end
+  
   it 'should show posts_counter of clicked user' do
     expect(page).to have_content(@user1.posts_counter)
   end
