@@ -31,7 +31,7 @@ RSpec.feature 'User Index Page', type: :feature do
   end
 
   scenario 'I can see the number of posts for each user' do
-    expect(page).to have_content("Number of posts: 1", count: 1)
-    expect(page).to have_content("Number of posts: 3", count: 1)
+    expect(page).to have_content('Number of posts: 1', count: 1)
+    expect(page).to have_content('Number of posts: 3', count: 1)
   end
 end

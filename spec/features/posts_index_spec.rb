@@ -1,16 +1,18 @@
 require 'rails_helper'
 RSpec.describe 'Post Index Page', type: :feature do
   before(:each) do
-    @user1 = User.create(name: 'Tom', photo: 'https://unsplash.com/photos', bio: 'Teacher from Mexico.', posts_counter: 0)
-    @first_post = Post.create(author: @user1, title: 'post1', text: 'This is my first post', likes_counter: 0, comments_counter: 0)
+    @user1 = User.create(name: 'Tom', photo: 'https://unsplash.com/photos', bio: 'Teacher from Mexico.',
+                         posts_counter: 0)
+    @first_post = Post.create(author: @user1, title: 'post1', text: 'This is my first post', likes_counter: 0,
+                              comments_counter: 0)
     @comment1 = Comment.create(post: @first_post, user: @user1, text: 'Hi Tom!, Nice comment')
     visit user_posts_path(@user1)
   end
-  
+
   it 'should show user name' do
     expect(page).to have_content(@user1.name)
   end
-  
+
   it 'should show posts_counter of clicked user' do
     expect(page).to have_content(@user1.posts_counter)
   end
