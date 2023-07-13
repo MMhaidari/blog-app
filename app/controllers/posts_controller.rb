@@ -2,18 +2,18 @@ class PostsController < ApplicationController
   def index
     if params[:user_id].present?
       @user = User.find(params[:user_id])
-      @posts = @user.posts
+      @posts = Post.includes(:author, :comments).where(author_id: params[:user_id])
     else
-      @posts = Post.all
+      @posts = Post.includes(:author, :comments).all
     end
   end
 
   def show
     if params[:user_id].present?
       @user = User.find(params[:user_id])
-      @post = @user.posts.find(params[:id])
+      @post = @user.posts.includes(:author, :comments, :likes).find(params[:id])
     else
-      @post = Post.find(params[:id])
+      @post = Post.includes(:author, :comments, :likes).find(params[:id])
       @user = @post.author
     end
 
