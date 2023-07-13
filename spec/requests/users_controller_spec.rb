@@ -4,6 +4,7 @@ RSpec.describe '/users', type: :request do
   describe 'UsersController' do
     context 'GET index' do
       before(:example) do
+        create(:user, id: 1)
         get '/users'
       end
 
@@ -18,23 +19,25 @@ RSpec.describe '/users', type: :request do
       it 'Render correct body placeholder' do
         expect(response.body).to include('<h1>list of Users</h1>')
       end
-    end
 
-    context 'GET show' do
-      before(:example) do
-        get '/users/1'
-      end
-
-      it 'Success for show action' do
+      it 'returns http success' do
         expect(response).to have_http_status(:success)
       end
 
-      it 'Render correct template for show action' do
-        expect(response).to render_template(:show)
+      it 'renders index template' do
+        expect(response).to render_template(:index)
+      end
+    end
+
+    describe 'GET /users/:id' do
+      let(:user) { User.create(name: 'Lilly', photo: 'https://unsplash.com/photos/F_-0BxGuVvo', bio: 'Teacher from Poland.') }
+
+      before do
+        get "/users/#{user.id}"
       end
 
-      it 'Render correct body placeholder' do
-        expect(response.body).to include('Single user')
+      it 'returns succesfull response' do
+        expect(response).to be_successful
       end
     end
   end

@@ -1,6 +1,9 @@
 <div class="posts-container">
   <% @posts.each do |post| %>
     <div class="post">
+    <div class="user-photo">
+      <%= image_tag(post.author.photo, alt: 'user photo', class: 'user-image') %>
+    </div>
       <h3 class="post-title"><%= post.title %></h3>
       <p class="post-text"><%= post.text %></p>
       <p class="post-meta">Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>

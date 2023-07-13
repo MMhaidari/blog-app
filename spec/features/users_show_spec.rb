@@ -35,5 +35,19 @@ RSpec.describe 'User Show Page', type: :feature do
     it 'should have a link to see all posts' do
       expect(page).to have_link('See all posts', href: user_posts_path(@user1))
     end
+
+    scenario 'when redirects to post show page' do
+      user = @user1
+      post = FactoryBot.create(:post, author: user)
+
+      visit user_path(user)
+      click_link(href: user_post_path(user, post))
+      expect(page).to have_content(user.name)
+    end
+
+    it 'should redirect to user post index page when clicking on "See all posts"' do
+      click_link 'See all posts'
+      expect(page).to have_current_path(user_posts_path(@user1))
+    end
   end
 end

@@ -21,7 +21,7 @@
     <% else %>
       <div class="posts-container">
         <% @user.user_recent_posts.each do |post| %>
-          <%= link_to user_post_path(@user, post, author_id: post.author_id), class: "post-card" do %>
+          <%= link_to user_post_path(@user, post), class: "post-card" do %>
             <div>
               <div>
                 <h1 class="post-title"><%= post.title.capitalize %></h1>

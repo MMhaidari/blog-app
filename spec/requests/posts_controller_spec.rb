@@ -4,6 +4,8 @@ RSpec.describe '/posts', type: :request do
   describe 'PostsController' do
     context 'GET index' do
       before(:example) do
+        user = create(:user, id: 1)
+        create_list(:post, 3, author: user)
         get '/users/1/posts'
       end
 
@@ -14,14 +16,12 @@ RSpec.describe '/posts', type: :request do
       it 'render template' do
         expect(response).to render_template(:index)
       end
-
-      it 'render body placeholder text' do
-        expect(response.body).to include('list of posts')
-      end
     end
 
     context 'GET show action' do
       before(:example) do
+        user = create(:user, id: 1)
+        create(:post, id: 1, author: user)
         get '/users/1/posts/1'
       end
 
@@ -31,10 +31,6 @@ RSpec.describe '/posts', type: :request do
 
       it 'Render correct template show' do
         expect(response).to render_template(:show)
-      end
-
-      it 'render placeholder' do
-        expect(response.body).to include('single of post')
       end
     end
   end

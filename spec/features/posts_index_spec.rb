@@ -17,28 +17,38 @@ RSpec.describe 'Post Index Page', type: :feature do
   it 'should show posts_counter of clicked user' do
     expect(page).to have_content(@user1.posts_counter)
   end
+
   it 'should show all posts' do
     expect(page).to have_content(@first_post.title)
   end
+
   it 'should show post text' do
     expect(page).to have_content(@first_post.text)
   end
+
   it 'should show comment text' do
     expect(page).to have_content(@comment1.text)
   end
+
   it 'should show comments counter' do
     expect(page).to have_content(@first_post.comments_counter)
   end
+
   it 'should show likes counter' do
     expect(page).to have_content(@first_post.likes_counter)
   end
-  scenario 'I can see a section for pagination if there are more posts than fit on the view.' do
+
+  it 'should show the user\'s profile picture' do
+    expect(page).to have_css("img[src*='https://unsplash.com/photos']")
+  end
+
+  it 'should have pagination section if there are more posts than fit on the view' do
     expect(page).to have_button('Pagination')
   end
-  scenario 'Pagination should be displayed if there are more posts than fit on the view' do
+
+  it 'should display pagination if there are more posts than fit on the view' do
     10.times do
-      post = Post.new(author: @user1, title: 'Sample Post', text: 'this is a sample post')
-      post.save
+      Post.create(author: @user1, title: 'Sample Post', text: 'This is a sample post')
     end
     visit user_posts_path(@user1)
     expect(page).to have_button('Pagination')
