@@ -9,6 +9,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @current_user = current_user
     if params[:user_id].present?
       @user = User.find(params[:user_id])
       @post = @user.posts.includes(:author, :comments, :likes).find(params[:id])
@@ -16,10 +17,12 @@ class PostsController < ApplicationController
       @post = Post.includes(:author, :comments, :likes).find(params[:id])
       @user = @post.author
     end
+    @comment = @post.comments
 
     @current_user = current_user
   rescue ActiveRecord::RecordNotFound
     flash[:alert] = 'Post not found.'
     redirect_to root_path
   end
+  
 end
