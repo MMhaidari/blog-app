@@ -13,6 +13,9 @@
   align-items: center;
   justify-content: center;
   margin-top: 50px;
+  width: 100%;
+
+  /* Added width property */
 }
 
 .user-card-container {
@@ -62,60 +65,4 @@
   position: absolute;
   bottom: 10px;
   right: 10px;
-}
-
-.posts-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.post-card {
-  width: 400px;
-  padding: 20px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  background-color: #f5f5f5;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.post-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.post-text {
-  margin-top: 10px;
-  color: #333;
-}
-
-.post-info {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #888;
-}
-
-.see-all-link {
-  display: block;
-  text-align: center;
-  margin-top: 20px;
-  font-size: 16px;
-}
-
-.no-posts-container {
-  text-align: center;
-  margin-top: 50px;
-}
-
-.no-posts-title {
-  font-size: 24px;
-  font-weight: bold;
-  margin: 0;
-}
-
-.no-posts-message {
-  color: #888;
-  margin-top: 10px;
 }

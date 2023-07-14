@@ -1,42 +1,18 @@
-<div class="user-container">
-  <div class="user-posts-container">
-    <div class="user-card-container">
-      <div class="user-card">
-        <div class="user-photo">
-          <%= image_tag(@user.photo, alt: 'user photo', class: 'user-image') %>
-        </div>
-        <div class="user-details">
-          <h1 class="user-name"><%= @user.name.capitalize %></h1>
-          <p class="user-post-count">Number of posts: <%= @user.posts_counter || "0" %></p>
-          <p class="user-bio"><%= @user.bio %></p>
-        </div>
-      </div>
-    </div>
+ <%= render 'shared/user', user:@user%>
 
-    <% if @user.user_recent_posts.empty? %>
-      <div class="no-posts-container">
-        <h2 class="no-posts-title">No Posts</h2>
-        <p class="no-posts-message">Kindly submit a post</p>
+<% if @user.user_recent_posts.empty? %>
+  <h2>No Posts</h2>
+  <p>Kindly submit a post</p>
+<% else %>
+      <div class="user_bio">
+        <h3>Bio</h3>
+        <p><%= @user.bio %><p>
       </div>
-    <% else %>
-      <div class="posts-container">
-        <% @user.user_recent_posts.each do |post| %>
-          <%= link_to user_post_path(@user, post), class: "post-card" do %>
-            <div>
-              <div>
-                <h1 class="post-title"><%= post.title.capitalize %></h1>
-                <p class="post-text"><%= post.text %></p>
-              </div>
-              <div class="post-info">
-                <p>Comments: <%= post.comments_counter %>, Likes: <%= post.likes_counter %></p>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
-      </div>
-      <div>
-        <%= link_to 'See all posts', user_posts_path(@user), class: "see-all-link" %>
-      </div>
-    <% end %>
-  </div>
+         <% @user.user_recent_posts.each do |post| %>
+
+      <%= render 'shared/post', post:post %>
+   <%end%>
+<div class="see_all_posts">
+ <%= link_to 'See all posts', user_posts_path(@user, controller: 'posts') %>
 </div>
+<% end %>
